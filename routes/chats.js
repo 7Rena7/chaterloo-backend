@@ -22,11 +22,17 @@ const { validateFields } = require("../middlewares/validate-fields");
 //   usersDelete,
 // } = require("../controllers/users");
 
-const { postNewChatId } = require("../controllers/chats");
+const { postNewChatId, getIntoChat } = require("../controllers/chats");
 
 const router = Router();
 
 router.get("/", [], postNewChatId);
+
+router.get(
+  "/:id",
+  [check("id", "An id is necessary").isMongoId(), validateFields],
+  getIntoChat
+);
 
 // TODO: Implement validation to check if From and Limit are positive integers
 // router.get(

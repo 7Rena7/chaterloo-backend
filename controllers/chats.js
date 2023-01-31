@@ -10,11 +10,20 @@ const postNewChatId = async (req = request, res = response) => {
 
   const chat = new Chat({ dateCreated });
 
-  await chat.save();
+  const { _id: chatUID } = await chat.save();
 
   res.status(201).json({
-    msg: "Chat created",
+    msg: "Chat created, redirect to path",
+    path: "chaterloo.link/" + chatUID,
     chat,
+  });
+};
+
+const getIntoChat = async (req = request, res = response) => {
+  const { id } = req.params;
+  console.log(id);
+  res.json({
+    msg: "Get received",
   });
 };
 
@@ -97,4 +106,5 @@ module.exports = {
   // usersPost,
   // usersDelete,
   postNewChatId,
+  getIntoChat,
 };
