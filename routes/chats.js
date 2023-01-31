@@ -26,7 +26,7 @@ const { postNewChatId } = require("../controllers/chats");
 
 const router = Router();
 
-router.post("/", [], postNewChatId);
+router.get("/", [], postNewChatId);
 
 // TODO: Implement validation to check if From and Limit are positive integers
 // router.get(
