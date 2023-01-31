@@ -1,6 +1,10 @@
 require("dotenv").config();
-const Server = require("./models/server");
+const RESTServer = require("./models/server");
+const SocketsServer = require("./models/server-sockets");
 
-const server = new Server();
+const RESTserver = new RESTServer();
 
-server.listen();
+const SocketServer = new SocketsServer();
+
+RESTserver.listen();
+SocketServer.listen();

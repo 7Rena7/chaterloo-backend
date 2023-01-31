@@ -4,11 +4,10 @@ const cors = require("cors");
 
 const { dbConnection } = require("../database/config");
 
-class Server {
+class RESTserver {
   constructor() {
     this.app = express();
-    this.port = process.env.PORT;
-
+    this.port = process.env.RESTPORT;
     this.paths = {
       chats: "/api/chats",
     };
@@ -30,22 +29,13 @@ class Server {
 
   middlewares() {
     // Public directory
-    this.app.use(express.static("public"));
+    this.app.use(express.static("public/REST"));
 
     // CORS
     this.app.use(cors());
 
     // Read and Parse of request body
     this.app.use(express.json());
-
-    // File uploads
-    // this.app.use(
-    //   fileUpload({
-    //     useTempFiles: true,
-    //     tempFileDir: "/tmp/",
-    //     createParentPath: true,
-    //   })
-    // );
   }
 
   routes() {
@@ -54,9 +44,9 @@ class Server {
 
   listen() {
     this.app.listen(this.port, () => {
-      console.log(`Chaterloo listening on port ${this.port}`);
+      console.log(`Chaterloo REST listening on port ${this.port}`);
     });
   }
 }
 
-module.exports = Server;
+module.exports = RESTserver;
