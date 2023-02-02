@@ -1,4 +1,5 @@
 require("colors");
+const { v4: uuidv4 } = require("uuid");
 
 const socketController = (socket) => {
   console.log("Client Connected: ".green, socket.id);
@@ -8,11 +9,10 @@ const socketController = (socket) => {
   });
 
   socket.on("send-message", (payload, callback) => {
-    // socket.emit("send-message", "Message sent");
+    const id = uuidv4();
+    callback({ id });
 
-    const id = 123456;
-    callback({ id, dateSend: new Date().getTime() });
-
+    // Send message to other users
     socket.broadcast.emit("send-message", payload);
   });
 };

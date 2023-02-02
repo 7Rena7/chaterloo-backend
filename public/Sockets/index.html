@@ -3,7 +3,8 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Socket Client</title>
+    <title>Chaterloo</title>
+    <link rel="image" type="image/png" href="../../assets/logo.png" />
     <link
       href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css"
       rel="stylesheet"
@@ -12,19 +13,87 @@
     />
   </head>
   <body class="container">
-    <h1 class="mt-2">Socket Client</h1>
+    <h1 class="mt-2">Chaterloo</h1>
 
     <p>
-      Connection Status:
+      Status:
       <b id="online" class="text-success">Connected</b>
       <b id="offline" class="text-danger">Disconnected</b>
     </p>
 
-    <form id="formId">
-      <input type="text" id="msg" class="form-control mb-2" required />
-      <input type="submit" id="btnSend" class="btn btn-primary" />
-      <!-- <button id="btnSend" class="btn btn-primary">Send</button> -->
-    </form>
+    <div class="mb-3">
+      <label for="" class="form-label">Full Name</label>
+      <input
+        type="text"
+        class="form-control"
+        name=""
+        id="user name"
+        placeholder="Your name..."
+      />
+      <small id="nameHelpId" class="form-text text-muted"
+        >Enter your name so other can see you!</small
+      >
+    </div>
+    <input
+      name=""
+      id="btnUserName"
+      class="btn btn-primary"
+      type="button"
+      value="Submit"
+    />
+
+    <div class="mb-3" style="display: none" id="messageForm">
+      <label for="" class="form-label">Message</label>
+      <input
+        type="text"
+        class="form-control"
+        name=""
+        id="msg"
+        aria-describedby="helpId"
+        placeholder="Your message..."
+      />
+      <span id="confirm" class="badge bg-success" style="display: none"
+        >Sent!</span
+      >
+      <small id="helpId" class="form-text text-muted"
+        >Enter your message to send to others!</small
+      >
+    </div>
+    <input
+      style="display: none"
+      name=""
+      id="btnMessage"
+      class="btn btn-primary"
+      type="button"
+      value="Submit"
+    />
+
+    <div
+      class="card-group"
+      id="messages-box"
+      style="
+        margin-top: 2rem;
+        padding: 1rem;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 1rem;
+      "
+    >
+      <h3 for="" class="form-label">Messages</h3>
+      <!-- <div class="card" style="width: 80%">
+        <div class="card-body">
+          <h4 class="card-title" style="display: inline">Example Sender</h4>
+          <p class="card-text" style="display: inline; margin-bottom: 0.5rem">
+            12:00
+          </p>
+          <p class="card-text">
+            Example message Lorem ipsum, dolor sit amet consectetur
+          </p>
+        </div>
+      </div> -->
+    </div>
 
     <script src="./socket.io/socket.io.js"></script>
     <script src="./js/socket-client.js"></script>
