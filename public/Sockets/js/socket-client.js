@@ -4,7 +4,7 @@ const form = document.getElementById("formId");
 const msg = document.getElementById("msg").value;
 const btnSend = document.getElementById("btnSend");
 
-const socket = io("http://localhost:8081");
+const socket = io(window.location.href);
 
 socket.on("connect", () => {
   offline.style.display = "none";
